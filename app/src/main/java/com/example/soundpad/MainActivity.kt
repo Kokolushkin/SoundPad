@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        for(i in 0..10){
+        for(i in 0..100){
             val item = Item()
             item.name = "NAME_$i"
             listOfItem!!.add(item)

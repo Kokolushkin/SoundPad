@@ -3,8 +3,10 @@ package com.example.soundpad
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.main_card_view.view.*
 import java.util.ArrayList
 
 class ItemAdapter(private val mDataList: ArrayList<Item>) :
@@ -17,6 +19,7 @@ class ItemAdapter(private val mDataList: ArrayList<Item>) :
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.name.text = mDataList[position].name
+        holder.image.setImageResource(R.drawable.default_image_card)
     }
 
     override fun getItemCount(): Int {
@@ -25,5 +28,6 @@ class ItemAdapter(private val mDataList: ArrayList<Item>) :
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         internal var name: TextView = itemView.findViewById<View>(R.id.name) as TextView
+        internal var image: ImageView = itemView.findViewById(R.id.image) as ImageView
     }
 }
