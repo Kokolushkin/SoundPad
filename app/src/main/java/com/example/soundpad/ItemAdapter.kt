@@ -24,10 +24,6 @@ class ItemAdapter(private val mDataList: ArrayList<Item>) :
     }
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        internal var name: TextView
-
-        init {
-            name = itemView.findViewById<View>(R.id.name) as TextView
-        }
+        internal var name: TextView = itemView.findViewById<View>(R.id.name) as TextView
     }
 }
