@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.main_card_view.view.*
 import java.util.ArrayList
 
-class ItemAdapter(private val mDataList: ArrayList<Item>) :
+class ItemAdapter(private val mDataList: ArrayList<Item>,
+                  private val cellClickListener: CellClickListener) :
     RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -20,6 +20,10 @@ class ItemAdapter(private val mDataList: ArrayList<Item>) :
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         holder.name.text = mDataList[position].name
         holder.image.setImageResource(R.drawable.default_image_card)
+
+        holder.itemView.setOnClickListener {
+            cellClickListener.onCellClickListener()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -27,7 +31,7 @@ class ItemAdapter(private val mDataList: ArrayList<Item>) :
     }
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        internal var name: TextView = itemView.findViewById<View>(R.id.name) as TextView
+        internal var name: TextView = itemView.findViewById<View>(R.id.name_group_of_sound) as TextView
         internal var image: ImageView = itemView.findViewById(R.id.image) as ImageView
     }
 }
